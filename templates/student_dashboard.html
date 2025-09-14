@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Student Dashboard</h2>
+{% if student %}
+  <p><strong>Name:</strong> {{ student.user.get_full_name }}</p>
+  <p><strong>Roll No:</strong> {{ student.roll_no }}</p>
+  <p><strong>Department:</strong> {{ student.department }}</p>
+  <p><a href="{% url 'result_detail' student.pk %}" class="btn btn-primary">View Results</a></p>
+{% else %}
+  <p>No student profile found for your user.</p>
+{% endif %}
+{% endblock %}

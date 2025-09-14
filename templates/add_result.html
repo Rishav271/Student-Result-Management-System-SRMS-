@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add / Update Result</h2>
+<form method="post">{% csrf_token %}
+  <div class="mb-3">
+    <label>Student</label>
+    <select class="form-control" name="student">
+      {% for s in students %}
+        <option value="{{ s.pk }}">{{ s.roll_no }} - {{ s.user.get_full_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Subject</label>
+    <select class="form-control" name="subject">
+      {% for sub in subjects %}
+        <option value="{{ sub.pk }}">{{ sub.code }} - {{ sub.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Marks</label><input class="form-control" name="marks" type="number" min="0" max="100">
+  </div>
+  <button class="btn btn-success" type="submit">Save Result</button>
+</form>
+{% endblock %}
